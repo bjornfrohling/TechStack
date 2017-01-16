@@ -1,6 +1,4 @@
 import {combineReducers} from 'redux';
+import LibraryReducer from './LibraryReducer';
 
-// One reducer called libraries which will return by default an empty array
-export default combineReducers({
-    libraries: () => []
-});
+export default combineReducers({libraries: LibraryReducer});

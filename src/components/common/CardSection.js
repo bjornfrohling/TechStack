@@ -7,7 +7,7 @@ const CardSection = (props) => {
             {props.children}
         </View>
     );
-}
+};
 
 const styles = {
     containerStyle: {
@@ -21,4 +21,4 @@ const styles = {
     }
 };
 
-export default CardSection;
+export {CardSection};
