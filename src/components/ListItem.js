@@ -7,10 +7,10 @@ import * as actions from '../actions';
 
 class ListItem extends Component {
 
-    renderDescription() {
-        const {library, selectedLibraryId} = this.props;
+    renderDescription(willExpand) {
+        const {library, expanded} = this.props;
 
-        if (selectedLibraryId === library.id) {
+        if (expanded) {
             return (
                 <Text>{library.description}</Text>
             );
@@ -49,8 +49,10 @@ const styles = {
 };
 
 // will show up as props in our component
-const mapStateToProps = (state) => {
-    return {selectedLibraryId: state.selectedLibraryId};
+const mapStateToProps = (state, ownProps) => {
+    const expanded = state.selectedLibraryId === ownProps.library.id;
+
+    return {expanded};
 };
 
 // ConnectHelper, 1st parameter props, 2nd parameter actions (bind actionCreator
