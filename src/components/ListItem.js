@@ -7,6 +7,16 @@ import * as actions from '../actions';
 
 class ListItem extends Component {
 
+    renderDescription() {
+        const {library, selectedLibraryId} = this.props;
+
+        if (selectedLibraryId === library.id) {
+            return (
+                <Text>{library.description}</Text>
+            );
+        }
+    }
+
     render() {
         const {titleStyle} = styles;
         const {id, title} = this.props.library;
@@ -19,11 +29,13 @@ class ListItem extends Component {
                             {title}
                         </Text>
                     </CardSection>
+                    {this.renderDescription()}
                 </View>
             </TouchableWithoutFeedback>
         );
     }
-}
+
+} // end class
 
 const styles = {
     titleStyle: {
@@ -36,6 +48,11 @@ const styles = {
     }
 };
 
+// will show up as props in our component
+const mapStateToProps = (state) => {
+    return {selectedLibraryId: state.selectedLibraryId};
+};
+
 // ConnectHelper, 1st parameter props, 2nd parameter actions (bind actionCreator
 // to component)
-export default connect(null, actions)(ListItem);
+export default connect(mapStateToProps, actions)(ListItem);
