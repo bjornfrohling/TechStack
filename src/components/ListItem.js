@@ -12,7 +12,11 @@ class ListItem extends Component {
 
         if (expanded) {
             return (
-                <Text>{library.description}</Text>
+                <CardSection>
+                    <Text style={{
+                        flex: 1
+                    }}>{library.description}</Text>
+                </CardSection>
             );
         }
     }
